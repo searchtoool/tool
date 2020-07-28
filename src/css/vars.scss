@@ -1,0 +1,20 @@
+$font-size: 14px;
+$font: Arial, sans-serif;
+$light_gray: #BBC0C4;
+
+
+$max-size-lg: 1200px;
+$max-size-md: 998px;
+$max-size-sm: 768px;
+$max-size-xs: 576px;
+
+$size-lg: 960px;
+$size-md: 720px;
+$size-sm: 540px;
+$size-xs: 96%;
+
+@mixin media_max_width($max_width, $width) {
+	@media screen and (max-width: $max_width) {
+		width: $width;
+	}
+}

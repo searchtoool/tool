@@ -1,0 +1,14 @@
+body {
+	font-size: $font-size;
+	font-family: $font;
+
+	.container {
+		width: 1170px;
+		margin: 0 auto;
+
+		@include media_max_width($max-size-lg, $size-lg);
+		@include media_max_width($max-size-md, $size-md);
+		@include media_max_width($max-size-sm, $size-sm);
+		@include media_max_width($max-size-xs, $size-xs);
+	}
+}
