@@ -1,4 +1,6 @@
 body {
+	background: var(--color-middle);
+	color: var(--color-dark);
 	font-size: $font-size;
 	font-family: $font;
 
@@ -11,4 +13,15 @@ body {
 		@include media_max_width($max-size-sm, $size-sm);
 		@include media_max_width($max-size-xs, $size-xs);
 	}
+}
+a{
+	color:var(--color-light);
+}
+input, input:before, input:after {
+    outline: none;
+    border: none;
+    -webkit-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
 }

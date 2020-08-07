@@ -12,7 +12,7 @@ const del = require('del');
 sass.compiler = require('node-sass');
 
 const isDev = process.argv.includes('--dev');
-const isProd = !isDev; 
+const isProd = !isDev;
 
 const webConfig = {
 	output: {
@@ -40,6 +40,12 @@ function images() {
 		.pipe(gulp.dest('./build/img'));
 }
 
+function php(){
+	return gulp.src('./src/**/*.php')
+		.pipe(gulp.dest('./build'))
+		.pipe(gulpIf(isDev, browserSync.stream()));
+}
+
 function html() {
 	return gulp.src('./src/**/*.html')
 		.pipe(gulp.dest('./build'))
@@ -59,7 +65,7 @@ function styles() {
 }
 
 function js() {
-	return gulp.src('./src/js/index.js')
+	return gulp.src('./src/js/**/*.js')
 		.pipe(webpack(webConfig))
 		.pipe(gulp.dest('./build/js'))
 		.pipe(gulpIf(isDev, browserSync.stream()));
@@ -68,19 +74,18 @@ function js() {
 function watch() {
 	if (isDev) {
 		browserSync.init({
-			server: {
-				baseDir: './build/'
-			}
+			proxy: 'localhost.x'
 		});
 	}
 
 	gulp.watch('./src/css/**/*.scss', styles);
 	gulp.watch('./src/**/*.html', html);
+	gulp.watch('./src/**/*.php', php);
 	gulp.watch('./src/js/**/*.js', js);
 }
 
-const build = gulp.series(clean, 
-	gulp.parallel(images, html, styles, js));
+const build = gulp.series(clean,
+	gulp.parallel(images, html, php, styles, js));
 
 const dev = gulp.series(build, watch);
 
