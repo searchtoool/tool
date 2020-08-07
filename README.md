@@ -3,10 +3,10 @@
 
 ## Start (development mode)
 Type in root of project:
-> install open server
-> make a new domen folder and add project files
-> add your local domen
-> changed "localhost.x" (gulpfile.js/function watch) on the local domen
+> install open server  
+> make a new domen folder and add project files  
+> add your local domen  
+> changed "localhost.x" (gulpfile.js/function watch) on the local domen  
 > npm run dev (terminal)
 
 ## Build
